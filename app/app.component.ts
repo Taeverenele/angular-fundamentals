@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  styleUrls: ['app.component.scss'],
-  template: `
-    <div class="app">
-      Hello!
+  templateUrl: `
+    <div>
+    {{ title }}
     </div>
-  `
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title: string = 'Ultimate Angular'
 
 }
