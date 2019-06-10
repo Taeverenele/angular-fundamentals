@@ -10,10 +10,7 @@ export class AppComponent {
   public handleClick() {
     this.name = "Taevere";
   }
-  public handleInput(event: any) {
-    this.name = event.target.value;
-  }
-  public handleBlur(event: any) {
-    this.name = event.target.value;
+  public handleChange(value: string) {
+    this.name = value;
   }
 }

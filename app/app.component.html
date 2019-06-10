@@ -1,5 +1,5 @@
 <div class="app">
   <button (click)="handleClick()">Change name</button>
-  <input type="text" [value]="name" (input)="handleInput($event)" (blur)="handleBlur($event)"/>
+  <input type="text" [ngModel]="name" (ngModelChange)="handleChange($event)" />
   <div>{{ name }}</div>
 </div>
