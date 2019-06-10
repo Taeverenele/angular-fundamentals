@@ -7,7 +7,7 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public name: string = "Nele";
-  public handleClick() {
-    this.name = "Taevere";
+  public handleClick(username: string) {
+    this.name = username;
   }
 }

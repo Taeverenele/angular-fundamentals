@@ -1,5 +1,5 @@
 <div class="app">
-  <button (click)="handleClick()">Change name</button>
-  <input type="text" [(ngModel)]="name"/>
+  <button (click)="handleClick(username.value)">Get value</button>
+  <input type="text" #username/>
   <div>{{ name }}</div>
 </div>
