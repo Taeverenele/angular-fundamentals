@@ -10,7 +10,4 @@ export class AppComponent {
   public handleClick() {
     this.name = "Taevere";
   }
-  public handleChange(value: string) {
-    this.name = value;
-  }
 }
