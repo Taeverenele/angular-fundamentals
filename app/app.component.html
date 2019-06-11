@@ -1,5 +1,6 @@
 <div class="app">
-  <button (click)="handleClick(username.value)">Get value</button>
-  <input type="text" #username/>
-  <div>{{ name }}</div>
+  <input type="text" [value]="name" (input)="handleChange($event.target.value)"/>
+  <div *ngIf="name.length">
+    Searching... {{ name }}
+  </div>
 </div>

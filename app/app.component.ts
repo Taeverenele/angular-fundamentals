@@ -6,8 +6,8 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  public name: string = "Nele";
-  public handleClick(username: string) {
-    this.name = username;
+  public name: string = "";
+  public handleChange(val: string) {
+    this.name = val;
   }
 }
