@@ -3,7 +3,8 @@ import { Component } from "@angular/core";
 interface Passenger {
   id: number,
   fullname: string,
-  checkedIn: boolean
+  checkedIn: boolean,
+  checkInDate: number | null
 }
 
 @Component({
@@ -16,22 +17,27 @@ export class AppComponent {
   passengers: Passenger[] = [{
     id: 1,
     fullname: 'Stephen',
-    checkedIn: true
+    checkedIn: true,
+    checkInDate: 1490742000000
   }, {
     id: 2,
     fullname: 'Rose',
-    checkedIn: false
+    checkedIn: false,
+    checkInDate: null
   }, {
     id: 3,
     fullname: 'James',
-    checkedIn: true
+    checkedIn: true,
+    checkInDate: 1491606000000
   }, {
     id: 4,
     fullname: 'Louise',
-    checkedIn: true
+    checkedIn: true,
+    checkInDate: 1488412800000
   }, {
     id: 5,
     fullname: 'Tina',
-    checkedIn: false
+    checkedIn: false,
+    checkInDate: null
   }];
 }
