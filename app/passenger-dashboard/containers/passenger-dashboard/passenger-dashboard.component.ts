@@ -1,15 +1,27 @@
 import { Component, OnInit } from "@angular/core";
+
 import { Passenger } from "../../models/passenger.interface";
 
 @Component({
   selector: "passenger-dashboard",
-  templateUrl: "./passenger-dashboard.component.html",
-  styleUrls: ["./passenger-dashboard.component.scss"],
+  styleUrls: ["passenger-dashboard.component.scss"],
+  template: `
+    <div>
+      <passenger-count
+        [items]="passengers">
+      </passenger-count>
+      <passenger-detail
+        *ngFor="let passenger of passengers;"
+        [detail]="passenger"
+        (edit)="handleEdit($event)"
+        (remove)="handleRemove($event)">
+      </passenger-detail>
+    </div>
+  `,
 })
-
 export class PassengerDashboardComponent implements OnInit {
   public passengers: Passenger[];
-
+  constructor() {}
   public ngOnInit() {
     this.passengers = [{
       id: 1,
@@ -42,5 +54,11 @@ export class PassengerDashboardComponent implements OnInit {
       checkInDate: null,
       children: null,
     }];
+  }
+  public handleEdit(event) {
+    console.log(event);
+  }
+  public handleRemove(event) {
+    console.log(event);
   }
 }
