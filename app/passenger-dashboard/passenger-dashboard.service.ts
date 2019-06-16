@@ -1,7 +1,12 @@
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 import { Passenger } from "./models/passenger.interface";
 
+@Injectable()
 export class PassengerDashboardService {
-  constructor() {}
+  constructor(private http: Http) {
+    console.log(this.http);
+  }
 
   public getPassengers(): Passenger[] {
     return [{
@@ -34,6 +39,6 @@ export class PassengerDashboardService {
       checkedIn: false,
       checkInDate: null,
       children: null,
-    }]
+    }];
   }
 }
