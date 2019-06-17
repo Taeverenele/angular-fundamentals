@@ -36,14 +36,17 @@ export class PassengerDashboardComponent implements OnInit {
   }
 
   public handleEdit(event: Passenger) {
-    this.passengerDashboardService.updatePassenger(event).subscribe((data: Passenger) => {
-      this.passengers = this.passengers.map((passenger: Passenger) => {
-        if (passenger.id === event.id) {
-          passenger = Object.assign({}, passenger, event);
-        }
-        return passenger;
-      });
-    });
+    this.passengerDashboardService.updatePassenger(event).subscribe(
+      (data: Passenger) => {
+        this.passengers = this.passengers.map((passenger: Passenger) => {
+          if (passenger.id === event.id) {
+            passenger = Object.assign({}, passenger, event);
+          }
+          return passenger;
+        });
+      },
+      (err) => console.error("Error in updatePassenger", err),
+      );
   }
 
   public handleRemove(event: Passenger) {
@@ -51,6 +54,8 @@ export class PassengerDashboardComponent implements OnInit {
       this.passengers = this.passengers.filter((passenger: Passenger) => {
         return passenger.id !== event.id;
       });
-    });
+    },
+    (err) => console.error("Error in removePassenger", err),
+    );
   }
 }
