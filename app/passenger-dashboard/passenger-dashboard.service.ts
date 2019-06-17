@@ -23,4 +23,10 @@ export class PassengerDashboardService {
       (response) => response.json()
     );
   }
+
+  public removePassenger(passenger: Passenger): Observable<Passenger> {
+    return this.http.delete(`${PASSENGER_API}/${passenger.id}`).map(
+      (response) => response.json()
+    );
+  }
 }
