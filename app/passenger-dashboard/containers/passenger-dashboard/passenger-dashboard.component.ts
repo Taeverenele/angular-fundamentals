@@ -32,7 +32,7 @@ export class PassengerDashboardComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.passengerDashboardService.getPassengers().subscribe((data: Passenger[]) => this.passengers = data);
+    this.passengerDashboardService.getPassengers().then((data: Passenger[]) => this.passengers = data);
   }
 
   public handleEdit(event: Passenger) {
