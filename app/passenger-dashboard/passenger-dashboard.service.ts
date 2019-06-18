@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
-import { Passenger } from "./models/passenger.interface";
+import { IPassenger } from "./models/passenger.interface";
 
 const PASSENGER_API: string = "/api/passengers";
 
@@ -15,16 +15,16 @@ export class PassengerDashboardService {
     console.log(this.http);
   }
 
-  public getPassengers(): Promise<Passenger[]> {
+  public getPassengers(): Promise<IPassenger[]> {
     return this.http.get(PASSENGER_API).toPromise()
       .then((response) => response.json());
   }
 
-  public getPassenger(id: number): Observable<Passenger> {
+  public getPassenger(id: number): Observable<IPassenger> {
     return this.http.get(`${PASSENGER_API}/${id}`).map((response) => response.json());
   }
 
-  public updatePassenger(passenger: Passenger): Observable<Passenger> {
+  public updatePassenger(passenger: IPassenger): Observable<IPassenger> {
     // Headers and request options not needed for this http request
     // but here to show how can/should be done
     const headers = new Headers({
@@ -37,7 +37,7 @@ export class PassengerDashboardService {
     ).catch((error: any) => Observable.throw(error.json()));
   }
 
-  public removePassenger(passenger: Passenger): Observable<Passenger> {
+  public removePassenger(passenger: IPassenger): Observable<IPassenger> {
     return this.http.delete(`${PASSENGER_API}/${passenger.id}`).map(
       (response) => response.json()
       ).catch((error: any) => Observable.throw(error.json()));

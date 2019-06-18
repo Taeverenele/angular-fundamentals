@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { Passenger } from "../../models/passenger.interface";
+import { IPassenger } from "../../models/passenger.interface";
 import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
 @Component({
@@ -25,20 +25,20 @@ import { PassengerDashboardService } from "../../passenger-dashboard.service";
 })
 export class PassengerDashboardComponent implements OnInit {
 
-  public passengers: Passenger[];
+  public passengers: IPassenger[];
 
   constructor(
     private passengerDashboardService: PassengerDashboardService,
   ) {}
 
   public ngOnInit() {
-    this.passengerDashboardService.getPassengers().then((data: Passenger[]) => this.passengers = data);
+    this.passengerDashboardService.getPassengers().then((data: IPassenger[]) => this.passengers = data);
   }
 
-  public handleEdit(event: Passenger) {
+  public handleEdit(event: IPassenger) {
     this.passengerDashboardService.updatePassenger(event).subscribe(
-      (data: Passenger) => {
-        this.passengers = this.passengers.map((passenger: Passenger) => {
+      (data: IPassenger) => {
+        this.passengers = this.passengers.map((passenger: IPassenger) => {
           if (passenger.id === event.id) {
             passenger = Object.assign({}, passenger, event);
           }
@@ -49,9 +49,9 @@ export class PassengerDashboardComponent implements OnInit {
       );
   }
 
-  public handleRemove(event: Passenger) {
-    this.passengerDashboardService.removePassenger(event).subscribe((data: Passenger) => {
-      this.passengers = this.passengers.filter((passenger: Passenger) => {
+  public handleRemove(event: IPassenger) {
+    this.passengerDashboardService.removePassenger(event).subscribe((data: IPassenger) => {
+      this.passengers = this.passengers.filter((passenger: IPassenger) => {
         return passenger.id !== event.id;
       });
     },

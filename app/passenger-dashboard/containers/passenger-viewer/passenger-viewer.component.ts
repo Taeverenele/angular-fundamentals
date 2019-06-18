@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Passenger } from "../../models/passenger.interface";
+import { IPassenger } from "../../models/passenger.interface";
 import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
 @Component({
@@ -7,15 +7,16 @@ import { PassengerDashboardService } from "../../passenger-dashboard.service";
   styleUrls: ["passenger-viewer.component.scss"],
   template: `
   <div>
-  {{ passenger | json }}</div>
+  <passenger-form [passenger]="passenger"></passenger-form>
+  </div>
   `,
 })
 export class PassengerViewerComponent implements OnInit {
-  public passenger: Passenger;
+  public passenger: IPassenger;
   constructor(private passengerDashboardService: PassengerDashboardService) {}
 
   public ngOnInit() {
-    this.passengerDashboardService.getPassenger(1).subscribe((data: Passenger) => {
+    this.passengerDashboardService.getPassenger(1).subscribe((data: IPassenger) => {
       this.passenger = data;
     });
   }

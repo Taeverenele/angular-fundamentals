@@ -1,12 +1,7 @@
-export interface Child {
-  name: string,
-  age: number
-}
-
-export interface Passenger {
-  id: number,
-  fullname: string,
-  checkedIn: boolean,
-  checkInDate: number | null,
-  children: Child[] | null
+export interface IPassenger {
+  id: number;
+  fullname: string;
+  checkedIn: boolean;
+  checkInDate: number | null;
+  baggage: string;
 }

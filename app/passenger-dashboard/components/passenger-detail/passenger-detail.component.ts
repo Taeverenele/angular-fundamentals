@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
-import { Passenger } from "../../models/passenger.interface";
+import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
   selector: "passenger-detail",
@@ -22,9 +22,6 @@ import { Passenger } from "../../models/passenger.interface";
         Check in date:
         {{ detail.checkInDate ? (detail.checkInDate | date: 'yMMMMd' | uppercase) : 'Not checked in' }}
       </div>
-      <div class="children">
-        Children: {{ detail.children?.length || 0 }}
-      </div>
       <button (click)="toggleEdit()">
         {{ editing ? 'Done' : 'Edit' }}
       </button>
@@ -37,7 +34,7 @@ import { Passenger } from "../../models/passenger.interface";
 export class PassengerDetailComponent implements OnChanges, OnInit {
 
   @Input()
-  public detail: Passenger;
+  public detail: IPassenger;
 
   @Output()
   public edit: EventEmitter<any> = new EventEmitter();
