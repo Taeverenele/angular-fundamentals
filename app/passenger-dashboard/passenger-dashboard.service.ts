@@ -20,6 +20,10 @@ export class PassengerDashboardService {
       .then((response) => response.json());
   }
 
+  public getPassenger(id: number): Observable<Passenger> {
+    return this.http.get(`${PASSENGER_API}/${id}`).map((response) => response.json());
+  }
+
   public updatePassenger(passenger: Passenger): Observable<Passenger> {
     // Headers and request options not needed for this http request
     // but here to show how can/should be done
