@@ -41,9 +41,7 @@ import { IPassenger } from "../../models/passenger.interface";
       <option *ngFor="let opt of baggageOptions" [value]="opt.key" [selected]="opt.key === passenger?.baggage">{{opt.value}}</option>
     </select>
     </div>
-    <div>{{ form.value | json }}</div>
-    <div>Valid {{ form.valid | json }}</div>
-    <div>Invalid {{ form.invalid | json }}</div>
+    <button type="submit" [disabled]="form.invalid">Update passenger</button>
     </form>
   `,
 })
