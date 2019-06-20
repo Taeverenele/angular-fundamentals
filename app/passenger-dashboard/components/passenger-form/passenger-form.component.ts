@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { IBaggage } from "../../models/baggage.interface";
 import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
@@ -26,12 +27,38 @@ import { IPassenger } from "../../models/passenger.interface";
       Check in date:
       <input type="number" name="checkInDate" [ngModel]="passenger?.checkInDate" />
     </div>
+
+    <div>
+    Luggage
+    <select name="baggage" [ngModel]="passenger?.baggage">
+      <option *ngFor="let opt of baggageOptions" [value]="opt.key" [selected]="opt.key === passenger?.baggage">{{opt.value}}</option>
+    </select>
+    </div>
     {{ form.value | json }}
     </form>
   `,
 })
 export class PassengerFormComponent {
   @Input() public passenger: IPassenger;
+
+  public baggageOptions: IBaggage[] = [
+    {
+      key: "none",
+      value: "No baggage",
+    },
+    {
+      key: "hand-only",
+      value: "Hand baggage",
+    },
+    {
+      key: "hold-only",
+      value: "Hold baggage",
+    },
+    {
+      key: "hand-hold",
+      value: "Hand and hold baggage",
+    },
+  ];
 
   public checkInPassenger() {
     this.passenger.checkInDate = Date.now();
