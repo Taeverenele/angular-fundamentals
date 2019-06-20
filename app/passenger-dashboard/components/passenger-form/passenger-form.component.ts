@@ -10,11 +10,18 @@ import { IPassenger } from "../../models/passenger.interface";
     {{ passenger | json }}
     <div>
       Passenger name:
-      <input type="text" name="fullname" [ngModel]="passenger?.fullname"/>
+      <input type="text" name="fullname" #fullname="ngModel" [ngModel]="passenger?.fullname" required/>
+      {{fullname.errors | json}}
+      <div *ngIf="fullname.errors?.required && fullname.dirty" class="error">
+        Passenger name is required
+      </div>
     </div>
     <div>
       Passenger ID:
-      <input type="number" name="id" [ngModel]="passenger?.id"/>
+      <input type="number" name="id" #id="ngModel" [ngModel]="passenger?.id" required/>
+      <div *ngIf="id.errors?.required && id.dirty" class="error">
+        Passenger id is required
+      </div>
     </div>
     <div>
       <label>
@@ -34,7 +41,9 @@ import { IPassenger } from "../../models/passenger.interface";
       <option *ngFor="let opt of baggageOptions" [value]="opt.key" [selected]="opt.key === passenger?.baggage">{{opt.value}}</option>
     </select>
     </div>
-    {{ form.value | json }}
+    <div>{{ form.value | json }}</div>
+    <div>Valid {{ form.valid | json }}</div>
+    <div>Invalid {{ form.invalid | json }}</div>
     </form>
   `,
 })
