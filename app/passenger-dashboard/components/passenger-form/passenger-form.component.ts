@@ -17,12 +17,8 @@ import { IPassenger } from "../../models/passenger.interface";
     </div>
     <div>
       <label>
-        <input type="radio" [value]="true" name="checkedIn" [ngModel]="passenger?.checkedIn" (ngModelChange)="checkInPassenger()"/>
-        Yes
-      </label>
-      <label>
-        <input type="radio" [value]="false" name="checkedIn" [ngModel]="passenger?.checkedIn"/>
-        No
+        <input type="checkbox" name="checkedIn" [ngModel]="detail?.checkedIn" [ngModel]="passenger?.checkedIn" (ngModelChange)="checkInPassenger($event)"/>
+        Checked in
       </label>
     </div>
 
@@ -37,7 +33,7 @@ import { IPassenger } from "../../models/passenger.interface";
 export class PassengerFormComponent {
   @Input() public passenger: IPassenger;
 
-  checkInPassenger() {
+  public checkInPassenger() {
     this.passenger.checkInDate = Date.now();
   }
 }
